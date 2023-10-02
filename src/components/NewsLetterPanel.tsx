@@ -3,6 +3,7 @@ import { useState } from "react";
 function NewsLetterPanel() {
   const [email, setEmail] = useState<string>();
   const [message, setMessage] = useState<string>();
+  const [submited, setSubmitted] = useState(false);
 
   const handleEmailAddress = (e: string) => {
     setEmail(e);
@@ -13,11 +14,28 @@ function NewsLetterPanel() {
       setMessage("Invalid Email Address");
     }
   };
-  const handleDisableButotn = (e: React.FormEvent) => {
+  const handleSubmitButton = (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitted(true);
   };
 
-  return (
+  return submited ? (
+    <div className="bg-white h-[500px] w-[500px] rounded-[30px] font-semibold flex flex-col justify-center  text-slate-900 p-12 ">
+      <img
+        className="w-[60px] h-[60px]"
+        src="././public/images/icon-list.svg"
+        alt=""
+      />
+      <h1 className="font-bold text-[50px]">Thanks for subscribing</h1>
+      <p className=" pb-10 pt-5">
+        A email confirmation has been sent to <strong>{email}</strong>.Please
+        open it and click the button inside to confirm your subscription
+      </p>
+      <button className="bg-slate-900  text-white w-[400px] p-4 rounded-lg font-semibold transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-105 hover:transition-all hover:bg-gradient-to-r from-rose-500 to-orange-400 hover:shadow-2xl hover:shadow-orange-300/50">
+        Dismiss message
+      </button>
+    </div>
+  ) : (
     <div className="bg-white h-[600px] w-[900px] rounded-[30px] font-semibold flex flex-row justify-center flex-grow text-slate-900 text-left p-5">
       <div className="flex flex-col justify-center p-16 ">
         <h1 className="font-bold text-[50px] pb-5">Stay updated!</h1>
@@ -27,7 +45,7 @@ function NewsLetterPanel() {
           <li>Measuring to ensure updates are a success</li>
           <li>And much more</li>
         </ul>
-        <form onSubmit={handleDisableButotn}>
+        <form onSubmit={handleSubmitButton}>
           <div className="flex flex-row justify-between">
             <label
               htmlFor="email-input"
@@ -55,6 +73,7 @@ function NewsLetterPanel() {
           <button
             className="bg-slate-900 text-white w-full p-4 rounded-lg font-semibold transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-105 hover:transition-all hover:bg-gradient-to-r from-rose-500 to-orange-400 hover:shadow-2xl hover:shadow-orange-300/50"
             type="submit"
+            disabled={email === undefined}
           >
             Subscribe to monthly newsletter
           </button>

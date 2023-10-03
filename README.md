@@ -31,7 +31,8 @@ Users should be able to:
 
 ### Screenshot
 
-still in dev
+![Alt text](image.png)
+![Alt text](image-1.png)
 
 ### Links
 
@@ -40,7 +41,12 @@ still in dev
 
 ## My process
 
-still in dev
+My process was very straight forward.
+1st Create a box that contains 2 divs essentially the text and the image
+2nd styling with flex and tailwind and css to match the design
+3nd handle states such as the email and the submit
+4th handle validation on the email
+5th handle the dismiss message button to go back to the main screen
 
 ### Built with
 
@@ -53,17 +59,29 @@ still in dev
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I already had a little bit of experience with react, however what i have learnt how the onSubmit atribute works on react forms as well as some styling features using tailwindcss
 
-To see how you can add code snippets, see below:
+This is one of the functions that i had to research about: Email Address validation
+
+```js
+const handleEmailAddress = (e: string) => {
+  setEmail(e);
+  const validation = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (e.match(validation)) {
+    setMessage("");
+  } else {
+    setMessage("Invalid Email Address");
+  }
+};
+```
 
 ### Continued development
 
-still in dev
+I want to focus more on react and it can be used in on a larger scale and eventually do full stack development
 
 ### Useful resources
 
-still in dev
+stackoverflow
 
 ## Author
 

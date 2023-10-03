@@ -3,12 +3,12 @@ import { useState } from "react";
 function NewsLetterPanel() {
   const [email, setEmail] = useState<string>();
   const [message, setMessage] = useState<string>();
-  const [submited, setSubmitted] = useState(false);
+  const [submited, setSubmitted] = useState<boolean>(false);
 
   const handleEmailAddress = (e: string) => {
     setEmail(e);
     const validation = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (e.match(validation) || e == "") {
+    if (e.match(validation)) {
       setMessage("");
     } else {
       setMessage("Invalid Email Address");
@@ -16,7 +16,12 @@ function NewsLetterPanel() {
   };
   const handleSubmitButton = (e: React.FormEvent) => {
     e.preventDefault();
+
     setSubmitted(true);
+  };
+  const handleDismissMessage = () => {
+    setEmail(undefined);
+    setSubmitted(false);
   };
 
   return submited ? (
@@ -31,7 +36,10 @@ function NewsLetterPanel() {
         A email confirmation has been sent to <strong>{email}</strong>.Please
         open it and click the button inside to confirm your subscription
       </p>
-      <button className="bg-slate-900  text-white w-[400px] p-4 rounded-lg font-semibold transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-105 hover:transition-all hover:bg-gradient-to-r from-rose-500 to-orange-400 hover:shadow-2xl hover:shadow-orange-300/50">
+      <button
+        onClick={handleDismissMessage}
+        className="bg-slate-900  text-white w-[400px] p-4 rounded-lg font-semibold transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-105 hover:transition-all hover:bg-gradient-to-r from-rose-500 to-orange-400 hover:shadow-2xl hover:shadow-orange-300/50"
+      >
         Dismiss message
       </button>
     </div>

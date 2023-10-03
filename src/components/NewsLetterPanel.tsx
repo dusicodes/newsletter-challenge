@@ -28,7 +28,7 @@ function NewsLetterPanel() {
     <div className="bg-white h-[500px] w-[500px] rounded-[30px] font-semibold flex flex-col justify-center  text-slate-900 p-12 ">
       <img
         className="w-[60px] h-[60px]"
-        src="././public/images/icon-list.svg"
+        src="/public/images/icon-list.svg"
         alt=""
       />
       <h1 className="font-bold text-[50px]">Thanks for subscribing</h1>
@@ -48,7 +48,7 @@ function NewsLetterPanel() {
       <div className="flex flex-col justify-center p-16 ">
         <h1 className="font-bold text-[50px] pb-5">Stay updated!</h1>
         <p>Join 60,00+ product manageer receiving montly updates on:</p>
-        <ul className="list-image-[url(./public/images/icon-list.svg)] list-inside mt-10 mb-10">
+        <ul className="list-image-[url(/public/images/icon-list.svg)] list-inside mt-10 mb-10">
           <li>Product dicovery and building what matters</li>
           <li>Measuring to ensure updates are a success</li>
           <li>And much more</li>
@@ -87,7 +87,7 @@ function NewsLetterPanel() {
           </button>
         </form>
       </div>
-      <img src="./public/images/desktop-image.svg" alt="image" />
+      <img src="/public/images/desktop-image.svg" alt="image" />
     </div>
   );
 }
